@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="victorpc.projetopdm.MainActivity">
+
+
+    <RadioGroup
+        android:id="@+id/radioButtonGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:baselineAligned="false"
+        android:layout_above="@+id/set_time"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="186dp">
+
+        <RadioButton
+            android:id="@+id/radioButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/radioButton1"
+            android:text="10 Min"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="155dp" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/set_time"
+            android:layout_toEndOf="@+id/radioButton2"
+            android:text="20 Min"
+            tools:layout_editor_absoluteX="137dp"
+            tools:layout_editor_absoluteY="155dp" />
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/radioButtonGroup"
+            android:layout_toStartOf="@+id/set_wallpaper"
+            android:text="30 Min"
+            tools:layout_editor_absoluteX="258dp"
+            tools:layout_editor_absoluteY="155dp" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/set_wallpaper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wallpaper"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="376dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="54dp" />
+
+    <Button
+        android:id="@+id/set_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set Time"
+        tools:layout_editor_absoluteY="305dp"
+        tools:layout_editor_absoluteX="148dp"
+        android:layout_above="@+id/set_wallpaper"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="57dp" />
+
+
+</RelativeLayout>
