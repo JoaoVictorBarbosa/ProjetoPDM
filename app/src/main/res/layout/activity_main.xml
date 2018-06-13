@@ -11,11 +11,11 @@
         android:id="@+id/radioButtonGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:baselineAligned="false"
-        android:layout_above="@+id/set_time"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="186dp">
+        android:layout_marginTop="137dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
 
         <RadioButton
             android:id="@+id/radioButton1"
@@ -70,6 +70,24 @@
         android:layout_above="@+id/set_wallpaper"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="57dp" />
+
+    <TextView
+        android:id="@+id/cityView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="47dp"
+        android:text="actualCity"/>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/set_time"
+        android:layout_below="@+id/cityView"
+        android:onClick="toggleGPSUpdates"
+        android:text="Button" />
 
 
 </RelativeLayout>
