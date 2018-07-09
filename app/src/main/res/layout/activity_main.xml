@@ -6,70 +6,17 @@
     android:layout_height="match_parent"
     tools:context="victorpc.projetopdm.MainActivity">
 
-
-    <RadioGroup
-        android:id="@+id/radioButtonGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="137dp"
-        android:baselineAligned="false"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/radioButton1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/radioButton1"
-            android:text="10 Min"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="155dp" />
-
-        <RadioButton
-            android:id="@+id/radioButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/set_time"
-            android:layout_toEndOf="@+id/radioButton2"
-            android:text="20 Min"
-            tools:layout_editor_absoluteX="137dp"
-            tools:layout_editor_absoluteY="155dp" />
-
-        <RadioButton
-            android:id="@+id/radioButton3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/radioButtonGroup"
-            android:layout_toStartOf="@+id/set_wallpaper"
-            android:text="30 Min"
-            tools:layout_editor_absoluteX="258dp"
-            tools:layout_editor_absoluteY="155dp" />
-
-    </RadioGroup>
-
     <Button
         android:id="@+id/set_wallpaper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="209dp"
         android:text="Wallpaper"
+        android:onClick="setWallpaper"
         tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="376dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="54dp" />
-
-    <Button
-        android:id="@+id/set_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Set Time"
-        tools:layout_editor_absoluteY="305dp"
-        tools:layout_editor_absoluteX="148dp"
-        android:layout_above="@+id/set_wallpaper"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="57dp" />
+        tools:layout_editor_absoluteY="376dp" />
 
     <TextView
         android:id="@+id/cityView"
@@ -84,8 +31,9 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/set_time"
-        android:layout_below="@+id/cityView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="104dp"
         android:onClick="toggleGPSUpdates"
         android:text="Button" />
 
