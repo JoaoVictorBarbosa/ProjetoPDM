@@ -28,6 +28,9 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -41,14 +44,17 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
+    Random gerador = new Random();
     List<String> trends;
     String cityName = null;
     String longitude = null;
@@ -56,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     private LocationManager locationManager = null;
     private Boolean flag = false;
     TextView cidadeAtual;
-    String query = "https://api.flickr.com/services/rest/?method=flickr.photos.search" + "&api_key=a00db9ea6312361a62c4c8828845f13b" + "&tags=" + cityName + "&format=json" + "&nojsoncallback=1" + "&extras=url_m";
+    String query;
     Bitmap wallpaper;
 
     @Override
@@ -108,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
                 public void run() {
                     cidadeAtual.setText(cityName);
                     Toast.makeText(MainActivity.this, "GPS Provider update", Toast.LENGTH_LONG).show();
+                    query = "https://api.flickr.com/services/rest/?method=flickr.photos.search" + "&api_key=a00db9ea6312361a62c4c8828845f13b" + "&tags=" + cityName + "&format=json" + "&nojsoncallback=1" + "&extras=url_m";
                     new LoadImagesFromFlickrTask().execute(query);
                 }
             });
@@ -147,9 +154,11 @@ public class MainActivity extends AppCompatActivity {
 
     @SuppressLint("MissingPermission")
     public void toggleGPSUpdates(View view) {
-        locationManager.requestLocationUpdates(
-                LocationManager.GPS_PROVIDER, 1000, 10, MyLocationListener);
-
+        flag = displayGpsStatus();
+        if(flag) {
+            locationManager.requestLocationUpdates(
+                    LocationManager.GPS_PROVIDER, 1000, 10, MyLocationListener);
+        }
 
     }
 
@@ -157,11 +166,13 @@ public class MainActivity extends AppCompatActivity {
         WallpaperManager myWallpaperManager = WallpaperManager
                 .getInstance(MainActivity.this);
         flag = displayGpsStatus();
-        if (flag && trends != null) {
-                new DownloadImage().execute(trends.get(1));
+        if (flag || trends != null) {
+                new DownloadImage().execute(trends.get(gerador.nextInt(26)));
                 try {
                     if(wallpaper != null) {
-                        myWallpaperManager.setBitmap(wallpaper);
+                        //myWallpaperManager.setBitmap(wallpaper);
+
+                        getBaseContext().setWallpaper(wallpaper);
 
                         Toast.makeText(MainActivity.this,
                                 "Wallpaper alterado com sucesso", Toast.LENGTH_SHORT)
@@ -222,10 +233,6 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(List result) {
             super.onPostExecute(result);
             dialog.dismiss();
-            Toast.makeText(MainActivity.this,
-                    json, Toast.LENGTH_LONG)
-                    .show();
-
         }
 
         @Override
@@ -259,22 +266,20 @@ public class MainActivity extends AppCompatActivity {
 
         private List<String> getImages(String jsonString) {
 
-            List<String> urls = new ArrayList();
+            ArrayList<String> urls = new ArrayList();
 
             try {
 
-                JSONObject imagesList = new JSONObject(jsonString);
-                JSONArray lista = new JSONArray(imagesList.getJSONArray("photo"));
+                Gson gson = new Gson();
 
-                JSONObject image;
+                JsonGeral json = gson.fromJson(jsonString, JsonGeral.class);
+                List<Photo> fotos = json.getJson().getFotos();
 
-                for (int i = 0; i < lista.length(); i++) {
-                    image = new JSONObject(lista.getString(i));
-
-                    urls.add(image.optString("url_m"));
-
+                for(int i = 0; i<fotos.size(); i++){
+                    urls.add(fotos.get(i).getUrl());
                 }
-            } catch (JSONException e) {
+
+            } catch (Exception e) {
                 Log.e("DEVMEDIA", "Erro no parsing do JSON", e);
             }
 
