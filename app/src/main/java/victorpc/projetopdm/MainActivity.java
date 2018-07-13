@@ -166,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
         WallpaperManager myWallpaperManager = WallpaperManager
                 .getInstance(MainActivity.this);
         flag = displayGpsStatus();
-        if (flag || trends != null) {
+        if (flag && trends != null) {
                 new DownloadImage().execute(trends.get(gerador.nextInt(26)));
                 try {
                     if(wallpaper != null) {
@@ -181,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
                 } catch (IOException e) {}
         } else {
             Toast.makeText(MainActivity.this,
-                    "GPS não está ativado ou lista vazia", Toast.LENGTH_SHORT)
+                    "GPS não está ativado ou Não tem opções de imagens", Toast.LENGTH_SHORT)
                     .show();
         }
     }

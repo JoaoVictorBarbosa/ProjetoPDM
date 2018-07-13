@@ -4,19 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="victorpc.projetopdm.MainActivity">
+    tools:context="victorpc.projetopdm.MainActivity"
+    android:background="@drawable/screenshot_15">
 
     <Button
         android:id="@+id/set_wallpaper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="209dp"
-        android:text="Wallpaper"
+        android:layout_marginBottom="136dp"
+        android:background="@drawable/round_shape_btn"
         android:onClick="setWallpaper"
+        android:text=" Change Wallpaper "
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="376dp" />
+
 
     <TextView
         android:id="@+id/cityView"
@@ -24,8 +27,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="47dp"
-        android:text="actualCity"/>
+        android:layout_marginTop="118dp"
+        android:text="actualCity"
+        android:textColor="#000000"/>
 
     <Button
         android:id="@+id/button"
@@ -33,9 +37,20 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="187dp"
+        android:background="@drawable/round_shape_btn"
         android:onClick="toggleGPSUpdates"
-        android:text="Button" />
+        android:text=" Set Configuration " />
+
+    <TextView
+        android:id="@+id/cidadeAtual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="81dp"
+        android:text="Sua Cidade Atual"
+        android:textColor="#000000"/>
 
 
 </RelativeLayout>
